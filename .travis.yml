@@ -1,0 +1,9 @@
+language: node_js
+cache:
+    - yarn
+install:
+    - yarn
+script:
+    - yarn run lint
+    - yarn test
+services: mongodb

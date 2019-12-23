@@ -1,0 +1,26 @@
+// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "dev",
+            "type": "node",
+            "request": "launch",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "${workspaceFolder}\\src\\index.js",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        {
+            "name": "test",
+            "type": "node",
+            "request": "launch",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "${workspaceRoot}/node_modules/mocha/bin/mocha",
+            "env": {
+                "NODE_ENV": "test"
+            }
+        }
+    ]
+}

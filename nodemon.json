@@ -1,0 +1,6 @@
+{
+    "verbose": true,
+    "quiet": true,
+    "ignore": ["*.test.js"],
+    "ext": "js,json"
+}
