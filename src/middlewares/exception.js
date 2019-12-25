@@ -14,6 +14,7 @@ const exceptionMiddleware = ({ apiPrefix = '/api/' } = {}) => {
                     output,
                     data,
                 } = err;
+
                 if (err.isBoom) {
                     ctx.response.status = output.statusCode || 500;
                     ctx.response.body = {
