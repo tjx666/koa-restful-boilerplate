@@ -1,4 +1,6 @@
-const services = require('require-dir')(__dirname, {
+const requireDir = require('require-dir');
+
+const services = requireDir(__dirname, {
     mapKey: (value, baseName) => `${baseName}Service`,
 });
 

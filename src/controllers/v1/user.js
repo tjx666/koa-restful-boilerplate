@@ -51,7 +51,7 @@ const login = async (ctx, next) => {
         throw Boom.unauthorized();
     }
 
-    // await next();
+    await next();
 };
 
 const getUsers = async (ctx, next) => {
