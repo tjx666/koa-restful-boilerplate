@@ -32,6 +32,18 @@
             "env": {
                 "NODE_ENV": "test"
             }
+        },
+        {
+            "name": "test-debug",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "args": ["--timeout", "999999", "${file}"],
+            "sourceMaps": true,
+            "env": {
+                "NODE_ENV": "test",
+                "DEBUG": "1"
+            }
         }
     ]
 }
