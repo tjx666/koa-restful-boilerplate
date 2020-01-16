@@ -17,7 +17,7 @@ const config = require('../configs');
 const { appLogger } = loggerHelpers.helpers;
 
 const start = async () => {
-    appLogger.info(`Startup server under ${chalk.bold.yellow(mode)} mode`);
+    appLogger.info(`Startup server under ${chalk.bold.yellow(mode.toUpperCase())} mode`);
 
     const app = await bootstrap();
     const { hostname, port, address } = config.server;
@@ -25,10 +25,7 @@ const start = async () => {
         const httServer = app.listen(port, hostname, err => cb(err, httServer));
     })();
 
-    // prettier-ignore
-    app.appLogger.info(
-        `Server is running at ${chalk.green.underline(address)} ${logSymbols.success}`
-    );
+    app.appLogger.info(`Server is running at ${chalk.green.underline(address)} ${logSymbols.success}`);
 
     return {
         app,
