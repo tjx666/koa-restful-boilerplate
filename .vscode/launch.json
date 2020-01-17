@@ -16,7 +16,7 @@
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-            "args": ["--timeout", "999999", "${workspaceFolder}/test"],
+            "args": ["${workspaceFolder}/test"],
             "sourceMaps": true,
             "env": {
                 "NODE_ENV": "test"
@@ -27,7 +27,7 @@
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-            "args": ["--timeout", "999999", "${file}"],
+            "args": ["${file}"],
             "sourceMaps": true,
             "env": {
                 "NODE_ENV": "test"

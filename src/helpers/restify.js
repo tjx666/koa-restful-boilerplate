@@ -7,13 +7,12 @@ const restifyHelper = server => {
             data: method === 'DELETE' ? {} : data,
         };
 
-        const statusMapper = new Map([
-            ['POST', 201],
-            ['DELETE', 204],
-        ]);
-
+        const statusMapper = {
+            POST: 201,
+            DELETE: 204,
+        };
         if (!status) {
-            status = statusMapper.get(method) || 200;
+            status = statusMapper[method] || 200;
         }
         this.status = status;
     };

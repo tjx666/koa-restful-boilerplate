@@ -29,7 +29,7 @@ const login = async (ctx, next) => {
             .max(60)
             .required(),
     });
-    await ctx.validate(schema);
+    await ctx.validateAsync(schema);
 
     const { name, password } = ctx.request.body;
     const user = await userService.checkLogin(name, password);

@@ -6,6 +6,7 @@ const rm = require('rimraf');
 const { isProd } = require('../../utils/env');
 
 const projectRoot = resolve(__dirname, '../../');
+
 const clearLogs = async () => {
     await promisify(rm)(resolve(projectRoot, './logs'));
 };
