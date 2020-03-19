@@ -1,5 +1,4 @@
 const { env } = require('../utils/env');
-
 const config = require(`./${env}.config`);
 
 const { server: serverConfig, db: dbConfig } = config;

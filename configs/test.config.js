@@ -1,4 +1,5 @@
 const _ = require('lodash');
+
 const devConfig = require('./development.config');
 
 exports.server = {
@@ -11,7 +12,7 @@ exports.security = {
 };
 
 exports.db = {
-    dbName: 'coo-test',
+    dbName: 'boilerplate-test',
 };
 
 module.exports = _.merge(devConfig, exports);

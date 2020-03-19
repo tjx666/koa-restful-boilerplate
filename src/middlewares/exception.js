@@ -1,45 +1,34 @@
-const exceptionMiddleware = ({ apiPrefix = '/api/' } = {}) => {
+module.exports = function exceptionMiddleware() {
     return async (ctx, next) => {
         try {
             await next();
-        } catch (err) {
-            if (ctx.request.url.startsWith(apiPrefix)) {
-                ctx.ctxLogger.error(err);
-                const {
-                    code,
-                    msg,
-                    message,
-                    status,
-                    statusCode,
-                    output,
-                    data,
-                } = err;
+        } catch (error) {
+            ctx.ctxLogger.error(error);
 
-                if (err.isBoom) {
-                    ctx.response.status = output.statusCode || 500;
-                    ctx.response.body = {
-                        code: (data && data.code) || ctx.response.status,
-                        msg:
-                            (data && data.msg) ||
-                            message ||
-                            output.payload.message ||
-                            output.payload.error,
-                    };
-                } else {
-                    ctx.response.status = status || statusCode || 500;
-                    ctx.response.body = {
-                        code: code || ctx.response.status,
-                        msg:
-                            msg ||
-                            message ||
-                            'An internal server error occurred',
-                    };
-                }
+            if (error.status === 401) {
+                // JWT 认证失败
+                ctx.response.status = 401;
+                ctx.body = {
+                    code: 1,
+                    msg: 'please login first!',
+                };
+            } else if (error.isBoom) {
+                ctx.response.status = error.output.statusCode || 500;
+                ctx.response.body = {
+                    code: (error.data && error.data.code) || 1,
+                    msg:
+                        (error.data && error.data.msg) ||
+                        error.message ||
+                        error.output.payload.message ||
+                        error.output.payload.error,
+                };
             } else {
-                throw err;
+                ctx.response.status = error.status || error.statusCode || 500;
+                ctx.response.body = {
+                    code: error.code || 1,
+                    msg: error.msg || error.message || 'An internal server error occurred',
+                };
             }
         }
     };
 };
-
-module.exports = exceptionMiddleware;

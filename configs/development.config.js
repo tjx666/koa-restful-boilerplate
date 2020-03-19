@@ -11,7 +11,7 @@ exports.security = {
 };
 
 exports.db = {
-    dbName: 'coo-dev',
+    dbName: 'boilerplate-dev',
     hostname: '127.0.0.1',
     port: 27017,
     connectOptions: {

@@ -1,9 +1,9 @@
-const restifyHelper = server => {
-    server.context.restify = function(data = {}, status) {
+module.exports = function restifyHelper(app) {
+    app.context.restify = function(data = {}, msg = 'success', status) {
         const { method } = this.request;
         this.response.body = {
             code: 0,
-            msg: 'ok',
+            msg,
             data: method === 'DELETE' ? {} : data,
         };
 
@@ -17,5 +17,3 @@ const restifyHelper = server => {
         this.status = status;
     };
 };
-
-module.exports = restifyHelper;

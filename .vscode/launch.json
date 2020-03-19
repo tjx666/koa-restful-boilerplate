@@ -12,14 +12,15 @@
             }
         },
         {
-            "name": "test-all",
+            "name": "test-debug",
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-            "args": ["${workspaceFolder}/test"],
+            "args": ["--timeout", "999999", "${file}"],
             "sourceMaps": true,
             "env": {
-                "NODE_ENV": "test"
+                "NODE_ENV": "test",
+                "VSCODE_DEBUG": "1"
             }
         },
         {
@@ -34,15 +35,14 @@
             }
         },
         {
-            "name": "test-debug",
+            "name": "test-all",
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-            "args": ["--timeout", "999999", "${file}"],
+            "args": ["${workspaceFolder}/test"],
             "sourceMaps": true,
             "env": {
-                "NODE_ENV": "test",
-                "DEBUG": "1"
+                "NODE_ENV": "test"
             }
         }
     ]

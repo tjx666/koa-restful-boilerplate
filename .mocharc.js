@@ -6,7 +6,7 @@ const configs = {
     colors: true,
 };
 
-if (process.env.DEBUG === '1') {
+if (process.env.VSCODE_DEBUG === '1') {
     delete configs.require;
 }
 

@@ -15,7 +15,6 @@ const restifyHelper = require('./helpers/restify');
 const validateHelper = require('./helpers/validate');
 
 const exceptionMiddleware = require('./middlewares/exception');
-const jwtExceptionMiddleware = require('./middlewares/jwtException');
 
 const router = require('./controllers/v1');
 
@@ -36,11 +35,10 @@ const bootstrap = async () => {
     app.use(cors());
     app.use(bodyParser());
     app.use(exceptionMiddleware());
-    app.use(jwtExceptionMiddleware());
     app.use(
         jwt({ secret: config.security.jwtSecret }).unless({
             path: [/\/api\/v\d\/users\/register/, /\/api\/v\d\/users\/login/],
-        })
+        }),
     );
     app.use(router.routes());
     app.use(
@@ -48,7 +46,7 @@ const bootstrap = async () => {
             throw: true,
             notImplemented: () => new Boom.notImplemented(),
             methodNotAllowed: () => new Boom.methodNotAllowed(),
-        })
+        }),
     );
 
     return app;
