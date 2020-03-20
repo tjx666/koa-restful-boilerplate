@@ -25,7 +25,9 @@ const start = async () => {
         const httServer = app.listen(port, hostname, err => cb(err, httServer));
     })();
 
-    app.appLogger.info(`Server is running at ${chalk.green.underline(address)} ${logSymbols.success}`);
+    app.appLogger.info(
+        `Server is running at ${chalk.green.underline(address)} ${logSymbols.success}`,
+    );
 
     return {
         app,
@@ -37,8 +39,8 @@ process.on('unhandledRejection', err => {
     appLogger.error(err);
 });
 
-if (mode !== 'test') {
-    start();
-} else {
+if (mode === 'test') {
     module.exports = start;
+} else {
+    start();
 }
