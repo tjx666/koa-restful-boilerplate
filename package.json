@@ -49,7 +49,7 @@
         "koa-logger": "^3.2.1",
         "koa-response-time": "^2.1.0",
         "koa-router": "^9.1.0",
-        "lodash": "^4.17.19",
+        "lodash": "^4.17.21",
         "log-symbols": "^4.0.0",
         "log4js": "^6.3.0",
         "mocha": "^8.0.1",
