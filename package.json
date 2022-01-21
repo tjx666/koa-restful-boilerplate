@@ -51,7 +51,7 @@
         "koa-router": "^9.1.0",
         "lodash": "^4.17.19",
         "log-symbols": "^4.0.0",
-        "log4js": "^6.3.0",
+        "log4js": "^6.4.0",
         "mocha": "^8.0.1",
         "mongoose": "^5.9.24",
         "power-assert": "^1.6.1",
